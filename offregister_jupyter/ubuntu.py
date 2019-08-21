@@ -1,6 +1,6 @@
 from os import environ
 
-from fabric.context_managers import cd, shell_env
+from fabric.context_managers import shell_env
 from fabric.contrib.files import exists
 from fabric.operations import run
 from offregister_fab_utils.apt import apt_depends
@@ -10,7 +10,6 @@ import offregister_nginx_static.ubuntu as nginx
 
 
 def install_jupyter_notebook0(virtual_env=None, *args, **kwargs):
-    apt_depends('virtualenv')
     home = run('echo $HOME', quiet=True)
     virtual_env = virtual_env or '{home}/venvs/jupyter'.format(home=home)
 
@@ -20,8 +19,7 @@ def install_jupyter_notebook0(virtual_env=None, *args, **kwargs):
         run('virtualenv {}'.format(virtual_env))
 
     with shell_env(VIRTUAL_ENV=virtual_env, PYTHONPATH=virtual_env,
-                   PATH="{virtual_env}/bin:$PATH".format(virtual_env=virtual_env)
-                   ):
+                   PATH="{virtual_env}/bin:$PATH".format(virtual_env=virtual_env)):
         run('pip install jupyter')
 
     user, group = (lambda ug: (ug[0], ug[1]) if len(ug) > 1 else (ug[0], ug[0]))(
