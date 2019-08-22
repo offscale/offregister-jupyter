@@ -14,6 +14,7 @@ def install_jupyter_notebook0(virtual_env=None, *args, **kwargs):
     virtual_env = virtual_env or '{home}/venvs/jupyter'.format(home=home)
 
     if not exists(virtual_env):
+        apt_depends('python-pip')
         run('pip install virtualenv')
         run('mkdir -p {}'.format(virtual_env))
         run('virtualenv {}'.format(virtual_env))
