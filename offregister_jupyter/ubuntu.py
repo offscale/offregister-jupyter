@@ -1,12 +1,12 @@
 from os import environ
 
+import offregister_nginx_static.ubuntu as nginx
 from fabric.context_managers import shell_env
 from fabric.contrib.files import exists
 from fabric.operations import run, sudo
 from offregister_fab_utils.apt import apt_depends
 
 from offregister_jupyter.systemd import install_jupyter_notebook_server
-import offregister_nginx_static.ubuntu as nginx
 
 
 def install_jupyter_notebook0(virtual_env=None, *args, **kwargs):

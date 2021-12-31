@@ -1,6 +1,6 @@
 from offregister_fab_utils.ubuntu.systemd import (
-    restart_systemd,
     install_upgrade_service,
+    restart_systemd,
 )
 
 
