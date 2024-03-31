@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from offregister_fab_utils.ubuntu.systemd import (
     install_upgrade_service,
     restart_systemd,

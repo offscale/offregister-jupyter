@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import environ
 
 import offregister_nginx_static.ubuntu as nginx
